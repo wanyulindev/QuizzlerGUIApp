@@ -17,6 +17,7 @@ data = response.json()
 # print(type(data))
 # new_data = data["results"]
 question_data = data["results"]
+# print(question_data)
 # question_data = [
 #     {
 #         "category": "Science: Computers",
@@ -124,7 +125,7 @@ question_data = data["results"]
 # print(type(question_data))
 # print(type(new_data))
 # question_data = new_data
-print(question_data)
+
 
 
 
