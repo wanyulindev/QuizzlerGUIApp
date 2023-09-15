@@ -11,7 +11,7 @@ for question in question_data:
     question_bank.append(new_question)
 
 quiz = QuizBrain(question_bank)
-quiz_ui = QuizInterface()
+quiz_ui = QuizInterface(quiz)
 
 # while we test tkinter ui.py,
 # window.mainloop() mainly working like a forever running loop to listen what we do inside
