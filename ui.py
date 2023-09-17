@@ -56,6 +56,11 @@ class QuizInterface:
 
     def get_next_question(self):
         # Check out OOP (2)
+        self.bg_color(LIGHTBLUE3)
+        self.canvas.itemconfig(self.text,
+                               font=(FONT_NAME, 20, "italic"),
+                               fill=LAVENDERBLUSH2)
+        self.current_score.config(text=f"SCORE: {self.quiz.score}/{self.quiz.question_number}")
         q_text = self.quiz.next_question()
         self.canvas.itemconfig(self.text, text=q_text)
 
@@ -73,18 +78,24 @@ class QuizInterface:
 
     def give_feedback(self, answer):
         self.canvas.itemconfig(self.text,
-                               text=answer,
-                               font=(FONT_NAME, 28, "bold"))
-        # if
+                               text=self.quiz.check_answer(answer),
+                               font=(FONT_NAME, 28, "bold"),
+                               fill=EGGSHELL)
+
+        # print(self.quiz.check_answer(answer))
+
+        if answer.lower() == self.quiz.current_question.answer.lower():
+            self.bg_color(GREEN)
+        else:
+            self.bg_color(PINK)
         # Since we always have to act before self.window.mainloop():
-        # self.window.after(1000, self.bg_color)
+        self.window.after(3000, self.get_next_question)
 
 
-    def bg_color_green(self):
-        self.canvas.config(bg=GREEN)
+    def bg_color(self, color):
+        self.canvas.config(bg=color)
 
-    def bg_color_red(self):
-        self.canvas.config(bg=PINK)
+
 
 
 
