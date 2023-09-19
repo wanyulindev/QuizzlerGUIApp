@@ -105,8 +105,5 @@ class QuizInterface:
         self.canvas.config(bg=color)
 
 
-
-
-    # test github connection
-
+# test github connection time out
 
