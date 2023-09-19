@@ -98,17 +98,13 @@ class QuizInterface:
         else:
             self.bg_color(PINK)
         # Since we always have to act before self.window.mainloop():
-        self.window.after(3000, self.get_next_question)
 
+        self.window.after(2000, func=self.get_next_question)
 
     def bg_color(self, color):
         self.canvas.config(bg=color)
 
 
-
-        # new commit for 9/18
-        # for more commit
-        # for more commit
 
 
 
