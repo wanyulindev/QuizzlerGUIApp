@@ -55,14 +55,23 @@ class QuizInterface:
         self.window.mainloop()
 
     def get_next_question(self):
-        # Check out OOP (2)
         self.bg_color(LIGHTBLUE3)
-        self.canvas.itemconfig(self.text,
-                               font=(FONT_NAME, 20, "italic"),
-                               fill=LAVENDERBLUSH2)
-        self.current_score.config(text=f"SCORE: {self.quiz.score}/{self.quiz.question_number}")
-        q_text = self.quiz.next_question()
-        self.canvas.itemconfig(self.text, text=q_text)
+        # Set an if statement to check if there's remain questions:
+        if self.quiz.still_has_questions():
+            # Check out OOP (2)
+            self.canvas.itemconfig(self.text,
+                                   font=(FONT_NAME, 20, "italic"),
+                                   fill=LAVENDERBLUSH2)
+            self.current_score.config(text=f"SCORE: {self.quiz.score}/{self.quiz.question_number}")
+            q_text = self.quiz.next_question()
+            self.canvas.itemconfig(self.text, text=q_text)
+        else:
+            self.canvas.itemconfig(self.text,
+                                   text="No Questions Remain.\nEnd of Quizzler Game.",
+                                   font=(FONT_NAME, 20, "italic"),
+                                   fill=LAVENDERBLUSH2)
+            self.true.config(state="disabled")
+            self.false.config(state="disabled")
 
     def if_true(self):
         # answer = self.quiz.check_answer("True")
